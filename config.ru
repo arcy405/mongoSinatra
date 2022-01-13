@@ -1,1 +1,0 @@
-‘./helloworld’ run Sinatra::Application
