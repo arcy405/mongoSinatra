@@ -1,8 +1,14 @@
 require 'sinatra'
 require 'mongoid'
 
-
+configure :development do
+    enable :logging, :dump_errors, :run, :sessions
+    Mongoid.load!(File.join(File.dirname(__FILE__), "config", "mongoid.yml"))
+  end
   
+  get '/db' do
+    "db: " <<  Mongoid.default_session[:moped].database.inspect
+  end
   get '/' do
     "Hello World mongodb"
   end
